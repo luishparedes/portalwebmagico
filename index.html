@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Mágica & Pastelómetro | Herramientas Profesionales</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --highlight: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-in-out;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #34495e;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background-color: #c0392b;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+        
+        .app-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .app-description {
+            margin-bottom: 1.5rem;
+            color: #7f8c8d;
+        }
+        
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+        
+        .demo-btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        .premium-btn {
+            display: inline-block;
+            background-color: var(--highlight);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .premium-btn:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+        
+        .motivational-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--accent);
+        }
+        
+        .motivational-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .quote-author {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+        
+        .feature h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin: 0.5rem 0;
+            color: #7f8c8d;
+        }
+        
+        .social-links a {
+            color: var(--primary);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-top: 1.5rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Calculadora <span>Mágica</span> & Pastelómetro</div>
+            <div class="slogan">Herramientas profesionales para tu éxito financiero</div>
+        </header>
+        
+        <section class="hero">
+            <h1>Potencia tu productividad con nuestras herramientas exclusivas</h1>
+            <p>Descubre cómo nuestras aplicaciones pueden transformar tu manera de trabajar y aumentar tus ingresos de manera significativa.</p>
+            <a href="https://forms.gle/ZbYMSqc93cXuKGTz8" class="cta-button">REGÍSTRATE AHORA</a>
+        </section>
+        
+        <section class="motivational-section">
+            <p class="motivational-quote">"La inversión en conocimiento paga el mejor interés."</p>
+            <p class="quote-author">- Benjamin Franklin</p>
+        </section>
+        
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--primary);">Nuestras Aplicaciones</h2>
+        <div class="apps-grid">
+            <div class="app-card">
+                <div class="app-icon"><i class="fas fa-calculator"></i></div>
+                <h3 class="app-title">Calculadora Mágica</h3>
+                <p class="app-description">La herramienta definitiva para cálculos precisos y rápidos. Optimiza tu tiempo y aumenta tu productividad.</p>
+                <div class="btn-group">
+                    <a href="https://luishparedes.github.io/democalaculadoramagica/" class="demo-btn">PROBAR DEMO</a>
+                    <a href="https://drive.google.com/file/d/1hDWohsMf_3IBCcmrE4th-USPZe64fFmd/view?usp=drive_link" class="download-btn">Android</a>
+                    <a href="https://luishparedes.github.io/apptiktok2025/" class="download-btn">Versión Web</a>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <div class="app-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3 class="app-title">Pastelómetro</h3>
+                <p class="app-description">Analiza y visualiza tus datos como nunca antes. Toma decisiones basadas en información precisa.</p>
+                <div class="btn-group">
+                    <a href="https://luishparedes.github.io/demopastelometro/" class="demo-btn">PROBAR DEMO</a>
+                    <a href="https://drive.google.com/file/d/1MhWseGWNbSC84Wa4bDJyAUgOCWv7oYwr/view?usp=drive_link" class="download-btn">Android</a>
+                    <a href="https://luishparedes.github.io/tiktokpastelometro2025/" class="download-btn">Versión Web</a>
+                </div>
+            </div>
+            
+            <div class="app-card">
+                <div class="app-icon"><i class="fas fa-star"></i></div>
+                <h3 class="app-title">Calculadora Aries</h3>
+                <p class="app-description">Próximamente. Una herramienta revolucionaria que cambiará tu forma de trabajar.</p>
+                <a href="https://forms.gle/L2MywefhhWSFkbDr9" class="premium-btn">RESERVAR AHORA</a>
+            </div>
+        </div>
+        
+        <section class="motivational-section">
+            <p class="motivational-quote">"El éxito no es casualidad. Es trabajo duro, perseverancia, aprendizaje, estudio, sacrificio y, sobre todo, amor por lo que estás haciendo."</p>
+            <p class="quote-author">- Pelé</p>
+        </section>
+        
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: var(--primary);">¿Por qué elegir nuestras herramientas?</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Rapidez</h3>
+                <p>Realiza tus cálculos y análisis en segundos, ahorrando horas de trabajo manual.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                <h3>Seguridad</h3>
+                <p>Tus datos están protegidos con los más altos estándares de seguridad.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Rentabilidad</h3>
+                <p>Inversión que se paga sola con el aumento de productividad y eficiencia.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3>Soporte</h3>
+                <p>Asistencia personalizada para sacar el máximo provecho de tus herramientas.</p>
+            </div>
+        </div>
+        
+        <section class="motivational-section" style="background-color: #f8f9fa; border-left-color: var(--highlight);">
+            <p class="motivational-quote">"No esperes. El momento perfecto nunca llegará. Empieza ahora, con las herramientas que tienes, y mejores herramientas llegarán en el camino."</p>
+            <a href="https://forms.gle/L2MywefhhWSFkbDr9" class="cta-button" style="margin-top: 1.5rem;">INVIERTE EN TU ÉXITO</a>
+        </section>
+        
+        <footer>
+            <div class="contact-info">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Contacto y Soporte</h3>
+                <p><i class="fas fa-phone-alt" style="color: var(--secondary);"></i> +58 412-5278450</p>
+                <p><i class="fas fa-phone-alt" style="color: var(--secondary);"></i> +58 424-7372490</p>
+                <p><i class="fas fa-envelope" style="color: var(--secondary);"></i> soporte@calculadoramagica.com</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+            
+            <p class="disclaimer">
+                *Nota: La aplicación para Android no es compatible con todos los dispositivos. Recomendamos probar primero la versión DEMO.
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Efecto de aparición suave al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.app-card, .feature, .motivational-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+            
+            // Rotar frases motivacionales
+            const quotes = [
+                {
+                    quote: "La disciplina es el puente entre las metas y los logros.",
+                    author: "Jim Rohn"
+                },
+                {
+                    quote: "Invierte en herramientas que te ahorren tiempo, y el tiempo te hará rico.",
+                    author: "Anónimo"
+                },
+                {
+                    quote: "Tu futuro es creado por lo que haces hoy, no mañana.",
+                    author: "Robert Kiyosaki"
+                },
+                {
+                    quote: "Primero resuelve el problema. Luego escribe el código.",
+                    author: "John Johnson"
+                }
+            ];
+            
+            let currentQuote = 0;
+            const quoteElement = document.querySelector('.motivational-quote');
+            const authorElement = document.querySelector('.quote-author');
+            
+            setInterval(() => {
+                currentQuote = (currentQuote + 1) % quotes.length;
+                quoteElement.style.opacity = '0';
+                authorElement.style.opacity = '0';
+                
+                setTimeout(() => {
+                    quoteElement.textContent = `"${quotes[currentQuote].quote}"`;
+                    authorElement.textContent = `- ${quotes[currentQuote].author}`;
+                    quoteElement.style.opacity = '1';
+                    authorElement.style.opacity = '1';
+                }, 500);
+            }, 8000);
+        });
+    </script>
+</body>
+</html>
